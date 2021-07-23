@@ -1,0 +1,40 @@
+[System]
+Name='fuzzycontrol2'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='error'
+Range=[0 1]
+NumMFs=2
+MF1='N':'trapmf',[-1.5 0 0.25 0.75]
+MF2='P':'trapmf',[0.25 0.75 1 1.5]
+
+[Input2]
+Name='cambio-error'
+Range=[0 1]
+NumMFs=2
+MF1='N':'trapmf',[-1.5 0 0.25 0.75]
+MF2='P':'trapmf',[0.25 0.75 1 1.5]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=3
+MF1='N':'trimf',[-0.417 0.001323 0.417]
+MF2='Z':'trimf',[0.0833 0.504 0.917]
+MF3='P':'trimf',[0.5807 0.9974 1.414]
+
+[Rules]
+2 2, 3 (1) : 1
+2 1, 2 (1) : 1
+1 2, 2 (1) : 1
+1 1, 1 (1) : 1
